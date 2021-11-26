@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Pages</title>
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+<!-- cdn of bootstrap 4.6 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+<div  class="container">
+    <h1>You Can See Actor Images Whose Name Start With "A" Letters</h1>
+<div class="card-group">
+  <div class="card">
+    <img src="{% static 'img/amitabh.jfif'%}" class="card-img-top" alt="not found">
+  </div>
+  <div class="card">
+    <img src="{% static 'img/ajay.jpg'%}" class="card-img-top" alt="...">
+
+  </div>
+  <div class="card">
+    <img src="{% static 'img/anil.jpg'%}" class="card-img-top" alt="...">
+  </div>
+
+<div class="card-group">
+  <div class="card">
+    <img src="{% static 'img/aamir.webp'%}" class="card-img-top" alt="not found">
+  </div>
+  <div class="card">
+    <img src="{% static 'img/anupam.jpg'%}" class="card-img-top" alt="...">
+  </div>
+  <div class="card">
+    <img src="{% static 'img/aditya.jpg'%}" class="card-img-top" alt="...">
+  </div>
+    <div class="card">
+    <img src="{% static 'img/aayushman.png'%}" class="card-img-top" alt="...">
+  </div>
+</div>
+</body>
+</html>
