@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR=BASE_DIR/'templates'
@@ -25,9 +25,10 @@ STATIC_DIR=BASE_DIR/'static'
 SECRET_KEY = 'django-insecure-ud3#m18&jye!z8t064v9u+cji#h-br^8_ge#0zw4&^s=my2phi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # for use to static file need to debug is False
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ["https://galleryproject-production.up.railway.app/", "https://pachahar.com/"] # for railways
 
 
 # Application definition
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',# for railways
 ]
 
 ROOT_URLCONF = 'GalleryProject.urls'
@@ -78,11 +80,14 @@ WSGI_APPLICATION = 'GalleryProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'NhpbrQc10NhK1ukQSIkb',
+        'HOST': 'containers-us-west-176.railway.app',
+        'PORT': 6908,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -124,6 +129,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     STATIC_DIR,
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
